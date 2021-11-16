@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "727904799913",
+    "project_id": "medoguide-6a34b",
+    "storage_bucket": "medoguide-6a34b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727904799913:android:57eb6c62d9054461122db8",
+        "android_client_info": {
+          "package_name": "com.example.medoguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727904799913-uq0s0h48nirgjfsufa8tpbe0mr4gmeba.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc7nu87zdRW8014k5xdL5uR81W0fkQ3hM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727904799913-uq0s0h48nirgjfsufa8tpbe0mr4gmeba.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

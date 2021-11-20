@@ -3,6 +3,8 @@ package com.example.medoguide;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
     Spinner spinner;
     EditText doctorsName, doctorsAge, doctorsGender, doctorsSpl, doctorsExp;
     EditText patientName, patientAge, patientGender, patientBldGrp;
+    TextView username;
     Button registerBtn;
 
     FirebaseAuth mAuth;
@@ -69,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         patientAge = findViewById(R.id.patientAge);
         patientGender = findViewById(R.id.patientGender);
         patientBldGrp = findViewById(R.id.patientBldGrp);
+        username = findViewById(R.id.username);
         registerBtn = findViewById(R.id.register);
 
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.category, android.R.layout.simple_spinner_item);
@@ -97,6 +102,45 @@ public class RegisterActivity extends AppCompatActivity {
                     CropImage.activity().setCropShape(CropImageView.CropShape.RECTANGLE).start(RegisterActivity.this);
                 });
 
+                doctorsName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if (s.length() != 0)
+                            username.setText(String.format("Hi %s", doctorsName.getText().toString()));
+                        else
+                            username.setText("Hi User");
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+
+                patientName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        if (s.length() != 0)
+                            username.setText(String.format("Hi %s", doctorsName.getText().toString()));
+                        else
+                            username.setText("Hi User");
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
 
                 registerBtn.setOnClickListener(v -> {
 
@@ -171,7 +215,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(RegisterActivity.this, DashBoard.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
             finish();
         }

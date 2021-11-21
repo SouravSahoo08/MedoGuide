@@ -25,8 +25,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+/*
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+*/
 
 import java.util.HashMap;
 import java.util.Map;
@@ -98,9 +100,9 @@ public class RegisterActivity extends AppCompatActivity {
                     registerBtn.setEnabled(false);
                 }
 
-                chngBtn.setOnClickListener(v -> {
+                /*chngBtn.setOnClickListener(v -> {
                     CropImage.activity().setCropShape(CropImageView.CropShape.RECTANGLE).start(RegisterActivity.this);
-                });
+                });*/
 
                 doctorsName.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -200,7 +202,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
@@ -210,7 +212,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
             profile.setImageURI(imageUri);
         }
-    }
+    }*/
 
     @Override
     protected void onStart() {

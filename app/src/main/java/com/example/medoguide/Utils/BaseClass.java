@@ -1,19 +1,12 @@
 package com.example.medoguide.Utils;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
-import android.content.Context;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class BaseClass {
 
@@ -37,7 +30,7 @@ public class BaseClass {
                 } else {
                     id = jsonPart.getString(regionIDType);
                 }
-                Log.i("sourav", id);
+
                 return id;
             } else if (res > 0)
                 lb = mid + 1;

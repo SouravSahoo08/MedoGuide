@@ -30,11 +30,11 @@ public class DashBoard extends AppCompatActivity {
             finish();
         });
         chat.setOnClickListener(v -> {
-            startActivity(new Intent(this, MedicineActivity.class));
+            //startActivity(new Intent(this, MedicineActivity.class));
             finish();
         });
         settings.setOnClickListener(v -> {
-            startActivity(new Intent(this, MedicineActivity.class));
+            //startActivity(new Intent(this, MedicineActivity.class));
             finish();
         });
 

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.medoguide">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,16 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".ResultActivity"></activity>
-        <activity android:name=".TrackingActivity">
+        <activity android:name=".TrackingActivity"/>
+        <activity android:name=".MedicineActivity" />
+        <activity android:name=".LoginScreen" /> <!-- <activity android:name=".RegisterActivity"></activity> -->
+        <activity android:name=".DashBoard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MedicineActivity" />
-        <activity android:name=".LoginScreen" /> <!-- <activity android:name=".RegisterActivity"></activity> -->
-        <activity android:name=".DashBoard" />
         <activity android:name=".RegisterActivity"> <!-- <activity android:name=".LoginScreen"> -->
             <!--
             <intent-filter>
@@ -29,6 +32,8 @@
             </intent-filter>
             -->
         </activity>
+
+        <receiver android:name=".Notification.Notification_reciever" />
 
         <meta-data
             android:name="preloaded_fonts"

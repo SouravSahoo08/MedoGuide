@@ -70,16 +70,15 @@
         android:textColor="@color/black"
         android:textSize="30sp"/>
 
-   <!-- <view
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="9dp"/>-->
+        android:layout_height="15dp"
+        android:background="@color/black"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vaccine_List"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:paddingHorizontal="5dp"
         android:visibility="gone"/>
 

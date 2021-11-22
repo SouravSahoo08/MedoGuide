@@ -1,12 +1,10 @@
 package com.example.medoguide;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.medoguide.MedicineFragment.MedicineListFragment;
 
 public class MedicineActivity extends AppCompatActivity {
 
@@ -14,6 +12,8 @@ public class MedicineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicine);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_Container, new MedicineListFragment()).commit();
 
         /**
          * code for back button to be written to move back to @DashBoard.java

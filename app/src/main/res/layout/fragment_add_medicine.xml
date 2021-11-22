@@ -162,7 +162,7 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_task"
+        android:id="@+id/fab_add_task2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -171,8 +171,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:onClick="saveMedicineData"
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_done" />
+        <!--android:onClick="saveMedicineData"-->
 
 </RelativeLayout>

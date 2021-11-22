@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,15 +24,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-/*
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
-*/
 
 import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+/*
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+*/
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -157,7 +157,7 @@ public class RegisterActivity extends AppCompatActivity {
                         map.put("gender", doctorsGender.getText().toString());
                         map.put("speciality", doctorsSpl.getText().toString());
                         map.put("experience", doctorsExp.getText().toString());
-                        ref.child("doctors").push()/*child(mAuth.getCurrentUser().getUid())*/.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        ref.child("doctors").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Toast.makeText(RegisterActivity.this, "Succesful", Toast.LENGTH_SHORT).show();
@@ -175,7 +175,7 @@ public class RegisterActivity extends AppCompatActivity {
                         map.put("age", patientAge.getText().toString());
                         map.put("gender", patientGender.getText().toString());
                         map.put("bloodGrp", patientBldGrp.getText().toString());
-                        ref.child("patients").push()/*child(mAuth.getCurrentUser().getUid())*/.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        ref.child("patients").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Toast.makeText(RegisterActivity.this, "Successful", Toast.LENGTH_SHORT).show();
@@ -214,12 +214,12 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }*/
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(RegisterActivity.this, DashBoard.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
             finish();
         }
-    }
+    }*/
 }

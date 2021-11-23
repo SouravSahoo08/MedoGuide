@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsFragment.DoctorSettingFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/set_d_profileImg"
+                android:layout_width="179dp"
+                android:layout_height="179dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/circle"
+                android:elevation="3dp"
+                android:src="@mipmap/ic_launcher" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/set_d_changeImage"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_below="@id/set_d_profileImg"
+                android:layout_marginStart="-55dp"
+                android:layout_marginTop="-40dp"
+                android:layout_toRightOf="@id/set_d_profileImg"
+                android:background="@drawable/circle"
+                android:elevation="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_change_btn" />
+
+            <TextView
+                android:id="@+id/set_d_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/set_d_profileImg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto"
+                android:text="Hi user"
+                android:textColor="@color/black"
+                android:textSize="36sp" />
+
+            <!--doctors menu-->
+            <LinearLayout
+                android:id="@+id/doctorsMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/set_d_username"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
+                android:orientation="vertical"
+                android:paddingStart="36dp"
+                android:paddingEnd="36dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Name :"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/set_d_doctorsName"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="28dp"
+                        android:background="@drawable/rounded_background_blue"
+                        android:maxLines="2"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Age :"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/set_d_doctorsAge"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="44dp"
+                        android:background="@drawable/rounded_background_blue"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Speciality :"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/set_d_doctorsSpl"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/rounded_background_blue"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-15dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Experince \n (in yrs) :"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/set_d_doctorsExp"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="17dp"
+                        android:background="@drawable/rounded_background_blue"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/set_d_update"
+                    android:layout_width="140dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:fontFamily="@font/roboto"
+                    android:text="update"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

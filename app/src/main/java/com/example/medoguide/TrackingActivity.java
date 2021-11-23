@@ -1,11 +1,12 @@
 package com.example.medoguide;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.example.medoguide.CovidTrackAndVaxFragment.TrackFragment;
 import com.example.medoguide.CovidTrackAndVaxFragment.VaxFragment;
@@ -45,5 +46,12 @@ public class TrackingActivity extends AppCompatActivity {
         });
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TrackFragment()).commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(TrackingActivity.this, DashBoard.class));
+        finish();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.medoguide.CovidTrackAndVaxFragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medoguide.Adapters.TrackListAdapter;
+import com.example.medoguide.DashBoard;
 import com.example.medoguide.Model.TrackListData;
 import com.example.medoguide.R;
 
@@ -40,6 +42,11 @@ public class TrackFragment extends Fragment {
         trackRecyclerView = view.findViewById(R.id.tracker_Recycler_View);
         trackRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         trackRecyclerView.setHasFixedSize(false);
+
+        view.findViewById(R.id.tr_backBtn).setOnClickListener(v->{
+            startActivity(new Intent(getActivity(), DashBoard.class));
+            getActivity().finish();
+        });
 
         DownloadTrackRecordData task = new DownloadTrackRecordData();
         task.execute("https://disease.sh/v2/all", "https://disease.sh/v3/covid-19/countries");

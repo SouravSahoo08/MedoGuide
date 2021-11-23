@@ -24,13 +24,14 @@ public class DashBoard extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private DatabaseReference ref;
 
+    private String typeOfUser = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
         username = findViewById(R.id.name_of_user);
-        Button button = findViewById(R.id.logout);
         Button reminder = findViewById(R.id.reminder);
         Button tracker = findViewById(R.id.tracker);
         Button chat = findViewById(R.id.chat);
@@ -53,7 +54,8 @@ public class DashBoard extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             Doctors doctors = snapshot.getValue(Doctors.class);
-                            username.setText(String.format("Hi %s", doctors.getName()));
+                            username.setText(String.format("Hi Dr. %s", doctors.getName()));
+                            typeOfUser = doctors.getSpeciality();
                         }
 
                         @Override
@@ -72,26 +74,22 @@ public class DashBoard extends AppCompatActivity {
 
         reminder.setOnClickListener(v -> {
             startActivity(new Intent(this, MedicineActivity.class));
-            //finish();
+            finish();
         });
 
         tracker.setOnClickListener(v -> {
             startActivity(new Intent(this, TrackingActivity.class));
-            //finish();
-        });
-        chat.setOnClickListener(v -> {
-            //startActivity(new Intent(this, MedicineActivity.class));
-            //finish();
-        });
-        settings.setOnClickListener(v -> {
-            //startActivity(new Intent(this, MedicineActivity.class));
-            //finish();
-        });
-
-        button.setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(DashBoard.this, LoginScreen.class));
             finish();
         });
+        chat.setOnClickListener(v -> {
+            startActivity(new Intent(this, VideoChatActivity.class)
+                    .putExtra("isDoctor", typeOfUser));
+            finish();
+        });
+        settings.setOnClickListener(v -> {
+            startActivity(new Intent(this, SettingsActivity.class).putExtra("isDoctor", typeOfUser));
+            finish();
+        });
+
     }
 }

@@ -1,4 +1,5 @@
 package com.example.medoguide.Model;
+
 /*
 * map.put("phoneNo", phoneNo);
 *  map.put("name", patientName.getText().toString());

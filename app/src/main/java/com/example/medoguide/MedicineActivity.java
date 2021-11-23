@@ -1,5 +1,6 @@
 package com.example.medoguide;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,16 @@ public class MedicineActivity extends AppCompatActivity {
         /**
          * code for back button to be written to move back to @DashBoard.java
          * */
+        findViewById(R.id.med_rem_backBtn).setOnClickListener(v->{
+            startActivity(new Intent(this, DashBoard.class));
+            finish();
+        });
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(MedicineActivity.this, DashBoard.class));
+        finish();
     }
 }

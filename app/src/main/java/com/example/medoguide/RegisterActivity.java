@@ -144,6 +144,8 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
+
+
                 registerBtn.setOnClickListener(v -> {
 
                     if (imageUri != null) {
@@ -202,24 +204,4 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (result != null) {
-                imageUri = result.getUri();
-            }
-            profile.setImageURI(imageUri);
-        }
-    }*/
-
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            startActivity(new Intent(RegisterActivity.this, DashBoard.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-            finish();
-        }
-    }*/
 }

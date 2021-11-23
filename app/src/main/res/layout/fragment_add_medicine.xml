@@ -173,6 +173,4 @@
         android:layout_marginBottom="16dp"
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_done" />
-        <!--android:onClick="saveMedicineData"-->
-
 </RelativeLayout>

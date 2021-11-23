@@ -49,7 +49,6 @@ public class AddMedicineFragment extends Fragment {
 
     private FirebaseAuth mUser;
     private DatabaseReference medRef;
-    private View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,53 +84,57 @@ public class AddMedicineFragment extends Fragment {
 
         FloatingActionButton fabAddMedicine = view.findViewById(R.id.fab_add_task2);
         fabAddMedicine.setOnClickListener(v->{
-            String mName = medicineName.getText().toString();
-            String mTime = timeTxt.getText().toString();
-            String mDoseno = noOfDoses.getText().toString();
-
-            Map<String, Object> map = new HashMap<>();
-            map.put("medicineName",mName);
-            map.put("doseType", doseType);
-            map.put("time",mTime);
-            map.put("no_of_doses", mDoseno);
-            map.put("interval", "everyday");
-
-            /** save medicine list to Firebase database*/
-            medRef.child(mUser.getCurrentUser().getUid()).child(mName).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-
-                    /** set reminder for the medicine*/
-                    Calendar calendar = Calendar.getInstance();
-                    Intent intent = new Intent(requireActivity().getApplicationContext(), Notification_reciever.class);
-                    intent.putExtra("medicineName", mName);
-                    intent.putExtra("no_of_doses", mDoseno);
-                    intent.putExtra("type", doseType);
-                    PendingIntent pendingIntent = PendingIntent.getBroadcast(requireActivity().getApplicationContext(),
-                            801,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-
-                    calendar.set(Calendar.HOUR_OF_DAY, hour);
-                    calendar.set(Calendar.MINUTE, minute);
-                    calendar.set(Calendar.SECOND, 0);
-                    calendar.set(Calendar.MILLISECOND, 0);
-                    long alarm_time = calendar.getTimeInMillis();
-                    AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
-                    assert alarmManager != null;
-                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,alarm_time,AlarmManager.INTERVAL_DAY,pendingIntent);
-
-                    Toast.makeText(getContext(), "Alarm set", Toast.LENGTH_SHORT).show();
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragment_Container,new MedicineListFragment()).commit();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-                }
-            });
+            saveMedicineToDatabase();
         });
 
         return view;
+    }
+
+    private void saveMedicineToDatabase() {
+        String mName = medicineName.getText().toString();
+        String mTime = timeTxt.getText().toString();
+        String mDoseno = noOfDoses.getText().toString();
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("medicineName",mName);
+        map.put("doseType", doseType);
+        map.put("time",mTime);
+        map.put("no_of_doses", mDoseno);
+        map.put("interval", "everyday");
+
+        /** save medicine list to Firebase database*/
+        medRef.child(mUser.getCurrentUser().getUid()).child(mName).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                /** set reminder for the medicine*/
+                Calendar calendar = Calendar.getInstance();
+                Intent intent = new Intent(requireActivity().getApplicationContext(), Notification_reciever.class);
+                intent.putExtra("medicineName", mName);
+                intent.putExtra("no_of_doses", mDoseno);
+                intent.putExtra("type", doseType);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(requireActivity().getApplicationContext(),
+                        801,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+                calendar.set(Calendar.HOUR_OF_DAY, hour);
+                calendar.set(Calendar.MINUTE, minute);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+                long alarm_time = calendar.getTimeInMillis();
+                AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
+                assert alarmManager != null;
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,alarm_time,AlarmManager.INTERVAL_DAY,pendingIntent);
+
+                Toast.makeText(getContext(), "Alarm set", Toast.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_Container,new MedicineListFragment()).commit();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void setCurrentTime() {
@@ -164,6 +167,8 @@ public class AddMedicineFragment extends Fragment {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         doseTypeList.setAdapter(arrayAdapter);
     }
+
+
 
     /*private void saveMedicineData(View view){
 
@@ -205,5 +210,4 @@ public class AddMedicineFragment extends Fragment {
         });
 
     }*/
-
 }

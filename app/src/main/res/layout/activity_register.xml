@@ -35,13 +35,25 @@
                 android:layout_marginStart="-55dp"
                 android:layout_marginTop="-40dp"/>
 
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profileImg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto"
+                android:text="Hi user"
+                android:textColor="@color/black"
+                android:textSize="36sp"/>
+
             <LinearLayout
                 android:id="@+id/details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/profileImg"
+                android:layout_below="@id/username"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="46dp"
                 android:layout_marginEnd="0dp"
                 android:orientation="vertical"
                 android:paddingStart="36dp"
@@ -229,9 +241,49 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-15dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Password\n(for VideoChat) :"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="18sp" />
+
+                        <EditText
+                            android:id="@+id/rID"
+                            android:layout_width="170dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="17dp"
+                            android:background="@drawable/rounded_background_blue"
+                            android:maxLength="6"
+                            android:maxLines="1"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/err"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="3dp"
+                        android:text="(This id is already taken"
+                        android:textColor="#AF0000"
+                        android:textSize="18sp"
+                        android:visibility="gone"/>
+
                 </LinearLayout>
 
-                <!--patients menu-->
+                <!--users menu-->
                 <LinearLayout
                     android:id="@+id/patientMenu"
                     android:layout_width="match_parent"

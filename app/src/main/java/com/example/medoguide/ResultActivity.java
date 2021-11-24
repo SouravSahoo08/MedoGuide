@@ -164,7 +164,7 @@ public class ResultActivity extends AppCompatActivity {
 
                         if (!dose1.equals("0") || !dose2.equals("0")) {
                             vaxListData.add(new VaccineListData(centreName, centreAddress, fee_type, amount, dose1, dose2, min_age_limit, vaccine_type));
-                            adapter = new VaccineListAdapter(getApplicationContext(), vaxListData);
+                            adapter = new VaccineListAdapter(getParent(), vaxListData);
                             vaccineList.setAdapter(adapter);
                         }
                     }

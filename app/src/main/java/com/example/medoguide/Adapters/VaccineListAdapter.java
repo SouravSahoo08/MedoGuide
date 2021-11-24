@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,16 +18,17 @@ import java.util.ArrayList;
 
 public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.VaxViewHolder> {
     private final VaccineListData[] listData;
-    private final Context mContext;
+    private Context mContext;
 
     public VaccineListAdapter(Context mContext, ArrayList<VaccineListData> listData) {
-        this.mContext = mContext;
+        //this.mContext = mContext;
         this.listData = listData.toArray(new VaccineListData[0]);
     }
 
     @NonNull
     @Override
     public VaxViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        mContext = parent.getContext();
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem = layoutInflater.inflate(R.layout.vaccine_slot_list_layout, parent, false);
         return new VaxViewHolder(listItem);
@@ -51,7 +51,7 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
             holder.firstDose.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cowin.gov.in/home"));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://selfregistration.cowin.gov.in/"));
                     mContext.startActivity(browserIntent);
                 }
             });
@@ -63,7 +63,7 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
             holder.secondDose.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cowin.gov.in/home"));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://selfregistration.cowin.gov.in/"));
                     mContext.startActivity(browserIntent);
                 }
             });

@@ -2,11 +2,11 @@ package com.example.medoguide;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.medoguide.Model.Doctors;
 import com.example.medoguide.Model.Users;
@@ -32,10 +32,10 @@ public class DashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_dash_board);
 
         username = findViewById(R.id.name_of_user);
-        Button reminder = findViewById(R.id.reminder);
-        Button tracker = findViewById(R.id.tracker);
-        Button chat = findViewById(R.id.chat);
-        Button settings = findViewById(R.id.settings);
+        CardView reminder = findViewById(R.id.reminder);
+        CardView tracker = findViewById(R.id.tracker);
+        CardView chat = findViewById(R.id.chat);
+        CardView settings = findViewById(R.id.settings);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 

@@ -6,4 +6,4 @@
 ##Tools, languages and frameworks
 * Android studio
 * firebase 
-* Jitsi sdk
+* [Jitsi sdk (for video conferencing)](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk)

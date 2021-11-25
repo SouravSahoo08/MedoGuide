@@ -7,6 +7,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Build;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 
 import androidx.core.app.NotificationCompat;
@@ -23,8 +25,12 @@ public class Notification_reciever extends BroadcastReceiver {
         String type = intent.getStringExtra("type");
 
         Vibrator mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        long[] pattern = {0, 100};
-        mVibrator.vibrate(pattern, -1);
+        //long[] pattern = {0, 100};
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mVibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            mVibrator.vibrate(200);
+        }
 
         MediaPlayer mMediaPlayer = MediaPlayer.create(context, R.raw.fingerlicking_alert_tone);
         mMediaPlayer.setLooping(false);
@@ -33,8 +39,10 @@ public class Notification_reciever extends BroadcastReceiver {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         Intent medicineListIntent = new Intent(context, MedicineActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
+        //BaseClass.updateHistory(context,medicineName,noOfDoses,type);
         PendingIntent pendingIntent = PendingIntent.getActivity(context,801,medicineListIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("channel1","hello", NotificationManager.IMPORTANCE_HIGH);

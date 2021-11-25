@@ -54,6 +54,8 @@ public class DoctorsListAdapter extends RecyclerView.Adapter<DoctorsListAdapter.
                     JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
                             .setServerURL(new URL("https://meet.jit.si"))
                             .setRoom(inputPatient)
+                            .setVideoMuted(true)
+                            .setAudioMuted(true)
                             .setWelcomePageEnabled(false)
                             .build();
                     JitsiMeetActivity.launch(mContext, options);

@@ -1,22 +1,16 @@
 package com.example.medoguide.CovidTrackAndVaxFragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.medoguide.DownloadTask.DownloadDistrictDetails;
-import com.example.medoguide.DownloadTask.DownloadStateDetail;
+import androidx.fragment.app.Fragment;
+
 import com.example.medoguide.R;
 import com.example.medoguide.ResultActivity;
 import com.example.medoguide.Utils.BaseClass;

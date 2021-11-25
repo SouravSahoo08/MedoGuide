@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".HistoryActivity"></activity>
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".VideoChatActivity" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".TrackingActivity" />

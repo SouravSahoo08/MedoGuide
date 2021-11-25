@@ -24,6 +24,11 @@ public class MedicineActivity extends AppCompatActivity {
             finish();
         });
 
+        findViewById(R.id.med_history).setOnClickListener(v->{
+            startActivity(new Intent(this, HistoryActivity.class));
+            finish();
+        });
+
     }
     @Override
     public void onBackPressed() {

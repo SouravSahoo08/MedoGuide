@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rem_layout"
-    tools:context=".MedicineActivity">
+    tools:context=".HistoryActivity">
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/top"
@@ -24,7 +24,7 @@
                 android:gravity="center_vertical">
 
                 <ImageView
-                    android:id="@+id/med_rem_backBtn"
+                    android:id="@+id/history_backBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -36,32 +36,33 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
-                    android:layout_toEndOf="@+id/med_rem_backBtn"
+                    android:layout_toEndOf="@+id/history_backBtn"
                     android:fontFamily="@font/roboto"
-                    android:text="Medicine Reminder"
+                    android:text="Medicine History"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
-                <ImageView
-                    android:id="@+id/med_history"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="20dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_history" />
 
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:id="@+id/head_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="Medicine taken"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
 
-    <FrameLayout
-        android:id="@+id/fragment_Container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/history_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/top"/>
-
+        android:layout_below="@id/head_Text"
+        android:layout_margin="5dp"/>
 </RelativeLayout>

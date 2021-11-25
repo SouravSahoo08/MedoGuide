@@ -1,14 +1,77 @@
 package com.example.medoguide.Utils;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class BaseClass {
+
+    public static void updateHistory(Context mContext, String medicineName, String no_of_doses, String doseType) {
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference historyRef = FirebaseDatabase.getInstance().getReference().child("history");
+
+        String currentDate = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
+
+        String currentTime = getStringTime();//new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("consumeDate", currentDate);
+        map.put("consumeTime", currentTime);
+        map.put("medicine", medicineName);
+        map.put("no_of_dose", no_of_doses);
+        map.put("doseType", doseType);
+        historyRef.child(mUser.getUid()).push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(mContext, "Successfully took " + medicineName, Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(mContext, e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private static String getStringTime() {
+        Calendar mCurrentTime = Calendar.getInstance();
+        int hour = mCurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mCurrentTime.get(Calendar.MINUTE);
+        int nonMilitaryHour = hour % 12;
+        if (nonMilitaryHour == 0)
+            nonMilitaryHour = 12;
+        String min = Integer.toString(minute);
+        if (minute < 10)
+            min = "0" + minute;
+
+        return String.format(Locale.getDefault(), "%d:%s %s", nonMilitaryHour, min, getAm_pmTaken(hour));
+    }
+
+    private static String getAm_pmTaken(int hourTaken) {
+        return (hourTaken < 12) ? "am" : "pm";
+    }
 
     public static String binarySearching(JSONArray arr, String inputText, String regionType, String regionIDType) throws JSONException {
         int lb = 0, ub = arr.length() - 1;

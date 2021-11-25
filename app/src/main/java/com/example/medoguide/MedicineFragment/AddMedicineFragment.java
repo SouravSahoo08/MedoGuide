@@ -117,7 +117,7 @@ public class AddMedicineFragment extends Fragment {
                         801,intent,PendingIntent.FLAG_UPDATE_CURRENT);
 
                 calendar.set(Calendar.HOUR_OF_DAY, hour);
-                calendar.set(Calendar.MINUTE, minute);
+                calendar.set(Calendar.MINUTE, minute-1);
                 calendar.set(Calendar.SECOND, 0);
                 calendar.set(Calendar.MILLISECOND, 0);
                 long alarm_time = calendar.getTimeInMillis();
@@ -167,47 +167,4 @@ public class AddMedicineFragment extends Fragment {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         doseTypeList.setAdapter(arrayAdapter);
     }
-
-
-
-    /*private void saveMedicineData(View view){
-
-        String mName = medicineName.getText().toString();
-        String mTime = timeTxt.getText().toString();
-        String mDoseno = noOfDoses.getText().toString();
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("doseType", doseType);
-        map.put("time",mTime);
-        map.put("no_of_doses", mDoseno);
-
-        *//** save medicine list to Firebase database*//*
-        medRef.child(mUser.getCurrentUser().getUid()).child(mName).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                *//** set reminder for the medicine*//*
-                Calendar calendar = Calendar.getInstance();
-                Intent intent = new Intent(requireActivity().getApplicationContext(), Notification_reciever.class);
-                intent.putExtra("medicineName", mName);
-                intent.putExtra("no_of_doses", mDoseno);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(requireActivity().getApplicationContext(),
-                        801,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-
-                calendar.set(Calendar.HOUR_OF_DAY, hour);
-                calendar.set(Calendar.MINUTE, minute);
-                calendar.set(Calendar.SECOND, 0);
-                calendar.set(Calendar.MILLISECOND, 0);
-                long alarm_time = calendar.getTimeInMillis();
-                AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
-                assert alarmManager != null;
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,alarm_time,AlarmManager.INTERVAL_DAY,pendingIntent);
-
-                Toast.makeText(getContext(), "Alarm set", Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_Container,new MedicineListFragment()).commit();
-            }
-        });
-
-    }*/
 }
